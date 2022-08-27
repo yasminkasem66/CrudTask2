@@ -1,0 +1,107 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Yasmin Kasem",
+      "email": "yasmin.abdellh@gmail.com",
+      "phone": [
+        "01100848905",
+        "01100848905"
+      ],
+      "gender": 1,
+      "address": "ss"
+    },
+    {
+      "id": 2,
+      "name": "Ali Mohamed",
+      "email": "ali.mohamed@gmail.com",
+      "phone": [
+        "01100000000",
+        "01111111111"
+      ],
+      "gender": 2,
+      "address": "ss"
+    },
+    {
+      "id": 3,
+      "name": "Hind Gamal",
+      "email": "hind.gamal@gmail.com",
+      "phone": [
+        "01155555555",
+        "01088888888"
+      ],
+      "gender": 1,
+      "address": "ss"
+    },
+    {
+      "name": "Yasmin",
+      "email": "",
+      "phone": [
+        "01100848905"
+      ],
+      "gender": "one",
+      "address": "tt",
+      "id": 4
+    },
+    {
+      "name": "Yasmin",
+      "email": "yasmin.abdellh@gmail.com",
+      "phone": [
+        "01100848905"
+      ],
+      "gender": "one",
+      "address": "tt",
+      "id": 5
+    },
+    {
+      "name": "ali",
+      "email": "a@gmail.com",
+      "phone": [
+        "01100848905"
+      ],
+      "gender": "one",
+      "address": "zzz",
+      "id": 6
+    },
+    {
+      "name": "bbbbbbbbbbbbbb",
+      "email": "yasmin.abdellh@gmail.com",
+      "phone": [
+        "01100848905"
+      ],
+      "gender": "one",
+      "address": "iiiiiiii",
+      "id": 7
+    },
+    {
+      "name": "llllll",
+      "email": "yasmin.abdellh@gmail.com",
+      "phone": [
+        "01100848905"
+      ],
+      "gender": "two",
+      "address": "uuuu",
+      "id": 8
+    },
+    {
+      "name": "xxxxxx",
+      "email": "yasmin.abdellh@gmail.com",
+      "phone": [
+        "01100848905"
+      ],
+      "gender": "two",
+      "address": "xxxxxxxxxxxxxxxxx",
+      "id": 9
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
