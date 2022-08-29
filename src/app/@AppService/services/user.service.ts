@@ -34,6 +34,9 @@ export class UserService {
   addUser(user: User) {
     return this.http.post<User>(this.usersUrl, user);
   }
+  updateUser(user: User, id: any) {
+    return this.http.put<User>(`${this.usersUrl}/${id}`, user);
+  }
   deleteUser(id: any) {
     return this.http.delete<any>(`${this.usersUrl}/${id}`);
   }
@@ -41,4 +44,11 @@ export class UserService {
   getUserById(id: any) {
     return this.http.get<any>(`${this.usersUrl}/${id}`);
   }
+  search(user: User) {
+    return this.http.get<any>(`${this.usersUrl}?name=${user.name}`);
+  }
+
+  //   GET /posts?title=json-server&author=typicode
+  // GET /posts?id=1&id=2
+  // GET /comments?author.name=typicode
 }

@@ -1,5 +1,5 @@
 <mat-card class="w-100">
-    <mat-card-title>Actions Buttons</mat-card-title>
+    <mat-card-title>User</mat-card-title>
     <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
     <mat-card-content class="container">
         <form class="row" *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
@@ -41,8 +41,9 @@
                     <mat-option [value]="2">Male</mat-option>
                 </mat-select>
             </mat-form-field>
-            <div class="col-12 col-md-6">
-                <button mat-raised-button color="primary">Search</button>
+            <div class="col-12 col-md-12">
+                <button mat-raised-button class="mx-1" color="primary" >Search</button>
+                <button mat-raised-button class="mx-1" type="button" (click)=" getUsers()" color="primary" >Clear</button>
                 <button mat-raised-button color="primary" type="button" [routerLink]="['add']"
                     routerLinkActive="router-link-active"> Add User</button>
             </div>
@@ -80,7 +81,7 @@
             <!-- Symbol Column -->
             <ng-container matColumnDef="gender">
                 <th mat-header-cell *matHeaderCellDef> Gender </th>
-                <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                <td mat-cell *matCellDef="let element"> {{GenderEnum[element.gender]}} </td>
             </ng-container>
             <!-- Symbol Column -->
             <ng-container matColumnDef="actions">

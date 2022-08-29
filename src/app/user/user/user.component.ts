@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { GenderEnum } from 'src/app/@AppService/enums/gender-enum';
 import { User } from 'src/app/@AppService/models/user';
 import { UserService } from 'src/app/@AppService/services/user.service';
 
@@ -28,6 +27,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('table') table!: MatTable<any>;
+  GenderEnum: typeof GenderEnum = GenderEnum;
 
   constructor(
     private fb: FormBuilder,
@@ -47,8 +47,8 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   createForm(): void {
     this.userForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      name: [''],
+      email: [''],
       phone: this.fb.array([this.fb.control('')]),
       gender: [null],
       address: [''],
@@ -77,24 +77,20 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     console.warn(this.userForm.value);
-    this.userService.addUser(this.userForm.value).subscribe((users) => {
-      this.getUsers();
+    this.userService.search(this.userForm.value).subscribe((users) => {
       console.log({ users });
+
+      this.dataSource.data = users;
+      this.table.renderRows();
     });
   }
 
   deleteUser(id: any) {
-    console.log({id});
-    
     this.userService.deleteUser(+id).subscribe((data) => {
-      console.log({data});
-      
       this.getUsers();
     });
   }
   editUser(id: any) {
-    console.log({ id });
-
     this.router.navigate([`common/user/edit/${id}`]);
   }
 }
