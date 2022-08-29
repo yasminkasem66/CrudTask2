@@ -4,6 +4,7 @@ import { MatGridTileHeaderCssMatStyler } from '@angular/material/grid-list';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/@AppService/models/user';
 import { UserService } from 'src/app/@AppService/services/user.service';
@@ -15,13 +16,24 @@ import { UserService } from 'src/app/@AppService/services/user.service';
 })
 export class UserComponent implements OnInit, AfterViewInit {
   userForm!: FormGroup;
-  displayedColumns: string[] = ['name', 'email', 'phone', 'address', 'gender'];
+  displayedColumns: string[] = [
+    'name',
+    'email',
+    'phone',
+    'address',
+    'gender',
+    'actions',
+  ];
   dataSource: MatTableDataSource<User> = new MatTableDataSource<User>([]);
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild('table') table!: MatTable<any>;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
     this.getUsers();
     this.createForm();
   }
@@ -51,24 +63,38 @@ export class UserComponent implements OnInit, AfterViewInit {
       this.table.renderRows();
     });
   }
-  
-  
+
   get fc() {
     return this.userForm.controls;
   }
   get phone() {
     return this.userForm.get('phone') as FormArray;
   }
-  
+
   addPhone() {
     this.phone.push(this.fb.control(''));
   }
-  
+
   onSubmit() {
     console.warn(this.userForm.value);
     this.userService.addUser(this.userForm.value).subscribe((users) => {
       this.getUsers();
       console.log({ users });
     });
+  }
+
+  deleteUser(id: any) {
+    console.log({id});
+    
+    this.userService.deleteUser(+id).subscribe((data) => {
+      console.log({data});
+      
+      this.getUsers();
+    });
+  }
+  editUser(id: any) {
+    console.log({ id });
+
+    this.router.navigate([`common/user/edit/${id}`]);
   }
 }

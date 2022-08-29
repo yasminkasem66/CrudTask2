@@ -5,9 +5,10 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user/user.component';
 import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [UserComponent, AddEditUserComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

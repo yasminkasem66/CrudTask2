@@ -1,0 +1,50 @@
+<mat-card class="w-100">
+    <mat-card-title>Actions Buttons</mat-card-title>
+    <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+    <mat-card-content class="container">
+        <form class="row" *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <!-- name -->
+            <mat-form-field class="col-12 col-md-6" appearance="fill">
+                <mat-label>name</mat-label>
+                <input matInput formControlName="name">
+            </mat-form-field>
+            <!-- email -->
+            <mat-form-field class="col-12 col-md-6" appearance="fill">
+                <mat-label>email</mat-label>
+                <input matInput formControlName="email">
+            </mat-form-field>
+            <!-- phone -->
+            <div class="col-12 col-md-6" formArrayName="phone">
+                <div class="" *ngFor="let phoneNum of phone.controls; let i=index">
+                    <!-- The repeated phoneNum template -->
+                    <mat-form-field appearance="fill">
+
+                        <mat-label>phoneNum:</mat-label>
+                        <input matInput id="phoneNum-{{ i }}" type="text" [formControlName]="i">
+                    </mat-form-field>
+
+                </div>
+                <button type="button" id="" class="d-inline" mat-button (click)="addPhone()">
+                    <mat-icon>add_box</mat-icon>
+                </button>
+            </div>
+            <!-- address -->
+            <mat-form-field class="col-12 col-md-6" appearance="fill">
+                <mat-label>Input</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+            <!-- gender -->
+            <mat-form-field class="col-12 col-md-6" appearance="fill">
+                <mat-label>Select</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option [value]="1">Female</mat-option>
+                    <mat-option [value]="2">Male</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div class="col-12 col-md-12">
+                <button mat-raised-button color="primary">{{action}}</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

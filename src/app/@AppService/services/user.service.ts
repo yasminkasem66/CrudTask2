@@ -24,15 +24,21 @@ export class UserService {
     return this._users.asObservable();
   }
 
-
   userById(id: number) {
     return this.dataStore.users.find((x) => x.id == id);
   }
 
   getUsers() {
-    return this.http.get<User[]>(this.usersUrl)
+    return this.http.get<User[]>(this.usersUrl);
   }
   addUser(user: User) {
-    return this.http.post<User>(this.usersUrl,user)
+    return this.http.post<User>(this.usersUrl, user);
+  }
+  deleteUser(id: any) {
+    return this.http.delete<any>(`${this.usersUrl}/${id}`);
+  }
+
+  getUserById(id: any) {
+    return this.http.get<any>(`${this.usersUrl}/${id}`);
   }
 }
